@@ -4,13 +4,32 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Pleas Enter new Employee's name: ");
-            string name = Console.ReadLine();
+            Dictionary<string, int> names = new Dictionary<string, int>();
+            Boolean AddMore = true;
+            int count = 1;
 
-            Console.WriteLine("Pleas Enter new Employee's salary: ");
-            string salary = Console.ReadLine();
+            while (AddMore)
+            {
+                Console.WriteLine("Pleas Enter new Employee's name: ");
+                string name = Console.ReadLine();
 
-            Console.WriteLine("The new Employee's name is " + name + " and his salary is " + salary + " sek per month");
+                Console.WriteLine("Pleas Enter new Employee's salary: ");
+                int salary = Convert.ToInt32(Console.ReadLine());
+
+                names.Add(name, salary);
+
+                Console.WriteLine("Enter P to print a list of employees.");
+                String print = Console.ReadLine().Trim().ToUpper();
+
+                if (print.Equals("P")) AddMore = false;
+
+            }
+
+            foreach (var name in names)
+            { 
+                Console.WriteLine(count + ". Employee's name is " + name.Key + " and his salary is " + name.Value.ToString() + " sek per month");
+                count++;
+            }
         }
     }
 }
