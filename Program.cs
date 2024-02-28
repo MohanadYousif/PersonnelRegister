@@ -5,8 +5,6 @@ namespace PersonnelRegister
     {
         static void Main(string[] args)
         {
-
-            List<Employee> employees = new List<Employee>();
             Payroll payroll = new Payroll();
             while (true)
             {
@@ -27,7 +25,8 @@ namespace PersonnelRegister
 
             }
 
-            foreach (Employee employee in employees)
+
+            foreach (Employee employee in payroll.GetEmployees())
             {
                 Console.WriteLine($"Name: {employee.name} Salary: {employee.Salary}");
             }
