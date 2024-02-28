@@ -21,7 +21,7 @@ namespace PersonnelRegister
                 Console.WriteLine("Pleas Enter new Employee's salary: ");
                 string Salary = Console.ReadLine();
 
-                employee.Salary = !String.IsNullOrEmpty(Salary) ? Convert.ToInt32(Salary) : 0;
+                employee.Salary = String.IsNullOrEmpty(Salary) ? 0 : Convert.ToInt32(Salary);
 
                 employeeList.Add(employee);
 
