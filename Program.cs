@@ -5,10 +5,9 @@
         static void Main(string[] args)
         {
             Dictionary<string, int> names = new Dictionary<string, int>();
-            Boolean AddMore = true;
             int count = 1;
 
-            while (AddMore)
+            while (true)
             {
                 Console.WriteLine("Pleas Enter new Employee's name: ");
                 string name = Console.ReadLine();
@@ -21,14 +20,13 @@
                 Console.WriteLine("Enter P to print a list of employees.");
                 String print = Console.ReadLine().Trim().ToUpper();
 
-                if (print.Equals("P")) AddMore = false;
+                if (print.Equals("P")) break;
 
             }
 
-            foreach (var name in names)
-            { 
-                Console.WriteLine(count + ". Employee's name is " + name.Key + " and his salary is " + name.Value.ToString() + " sek per month");
-                count++;
+            for (int i = 0; i < names.Count; i++)
+            {
+                Console.WriteLine(count + ". Employee's name is " + names.ElementAt(i).Key + " and his salary is " + names.ElementAt(i).Value.ToString() + " sek per month");
             }
         }
     }
