@@ -1,20 +1,29 @@
-﻿namespace PersonnelRegister
+﻿
+namespace PersonnelRegister
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Dictionary<string, int> names = new Dictionary<string, int>();
+
+            List<Employee> employeeList = new List<Employee>();
 
             while (true)
             {
-                Console.WriteLine("Pleas Enter new Employee's name: ");
-                string name = Console.ReadLine();
+                Employee employee = new Employee();
+
+                Console.WriteLine("Pleas Enter new Employee's first name: ");
+                employee.firstName = Console.ReadLine();
+
+                Console.WriteLine("Pleas Enter new Employee's last name: ");
+                employee.lastName = Console.ReadLine();
 
                 Console.WriteLine("Pleas Enter new Employee's salary: ");
-                int salary = Convert.ToInt32(Console.ReadLine());
+                string Salary = Console.ReadLine();
 
-                names.Add(name, salary);
+                employee.Salary = !String.IsNullOrEmpty(Salary) ? Convert.ToInt32(Salary) : 0;
+
+                employeeList.Add(employee);
 
                 Console.WriteLine("Enter P to print a list of employees.");
                 String print = Console.ReadLine().Trim().ToUpper();
@@ -23,9 +32,10 @@
 
             }
 
-            for (int i = 0; i < names.Count; i++)
+            for (int i = 0; i < employeeList.Count; i++)
             {
-                Console.WriteLine(i + ". Employee's name is " + names.ElementAt(i).Key + " and his salary is " + names.ElementAt(i).Value.ToString() + " sek per month");
+                Console.WriteLine(i + ". Employee's name is " + employeeList.ElementAt(i).firstName + " " + employeeList.ElementAt(i).lastName +
+                    " and his salary is " + employeeList.ElementAt(i).Salary + " sek per month");
             }
         }
     }
