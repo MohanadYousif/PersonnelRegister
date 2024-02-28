@@ -6,36 +6,30 @@ namespace PersonnelRegister
         static void Main(string[] args)
         {
 
-            List<Employee> employeeList = new List<Employee>();
-
+            List<Employee> employees = new List<Employee>();
+            Payroll payroll = new Payroll();
             while (true)
             {
                 Employee employee = new Employee();
 
-                Console.WriteLine("Pleas Enter new Employee's first name: ");
-                employee.firstName = Console.ReadLine();
-
-                Console.WriteLine("Pleas Enter new Employee's last name: ");
-                employee.lastName = Console.ReadLine();
+                Console.WriteLine("Pleas Enter new Employee's name: ");
+                string name = Console.ReadLine();
 
                 Console.WriteLine("Pleas Enter new Employee's salary: ");
-                string Salary = Console.ReadLine();
+                string SalaryValue = Console.ReadLine();
 
-                employee.Salary = String.IsNullOrEmpty(Salary) ? 0 : Convert.ToInt32(Salary);
+                int Salary = String.IsNullOrEmpty(SalaryValue) || !int.TryParse(SalaryValue, out _) ? 0 : Convert.ToInt16(SalaryValue);
 
-                employeeList.Add(employee);
+                payroll.AddEmployee(name, Salary);
 
-                Console.WriteLine("Enter P to print a list of employees.");
-                String print = Console.ReadLine().Trim().ToUpper();
-
-                if (print.Equals("P")) break;
+                Console.WriteLine("Press Enter to print list of employees, or type anything to add more employees.");
+                if (String.IsNullOrEmpty(Console.ReadLine())) break;
 
             }
 
-            for (int i = 0; i < employeeList.Count; i++)
+            foreach (Employee employee in employees)
             {
-                Console.WriteLine(i + ". Employee's name is " + employeeList.ElementAt(i).firstName + " " + employeeList.ElementAt(i).lastName +
-                    " and his salary is " + employeeList.ElementAt(i).Salary + " sek per month");
+                Console.WriteLine($"Name: {employee.name} Salary: {employee.Salary}");
             }
         }
     }
