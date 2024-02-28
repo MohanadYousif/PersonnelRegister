@@ -5,7 +5,6 @@
         static void Main(string[] args)
         {
             Dictionary<string, int> names = new Dictionary<string, int>();
-            int count = 1;
 
             while (true)
             {
@@ -26,7 +25,7 @@
 
             for (int i = 0; i < names.Count; i++)
             {
-                Console.WriteLine(count + ". Employee's name is " + names.ElementAt(i).Key + " and his salary is " + names.ElementAt(i).Value.ToString() + " sek per month");
+                Console.WriteLine(i + ". Employee's name is " + names.ElementAt(i).Key + " and his salary is " + names.ElementAt(i).Value.ToString() + " sek per month");
             }
         }
     }
